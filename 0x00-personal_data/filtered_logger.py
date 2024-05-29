@@ -3,7 +3,9 @@
 import re
 import logging
 from typing import List
-import csv
+
+# Define PII fields
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 def filter_datum(
@@ -57,9 +59,6 @@ class RedactingFormatter(logging.Formatter):
             self.REDACTION,
             original_message,
             self.SEPARATOR)
-
-
-PII_FIELDS = ("name", "email", "phone", "address", "credit_card")
 
 
 def get_logger() -> logging.Logger:
