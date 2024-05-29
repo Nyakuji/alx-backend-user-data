@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Regex-ing"""
+import os
 import re
+import mysql.connector
 import logging
+from mysql.connector.connection import MySQLConnection
 from typing import List
 
 # Define PII fields
@@ -78,3 +81,27 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> MySQLConnection:
+    """
+    Creates and returns a connection to the database using credentials
+    from environment variables.
+
+    Returns:
+        MySQLConnection: A MySQL connection object.
+    """
+    # Retrieve database credentials from environment variables
+    db_username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    db_password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    db_host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+    db_name = os.getenv('PERSONAL_DATA_DB_NAME')
+
+    # Establish and return the database connection
+    connection = mysql.connector.connect(
+        user=db_username,
+        password=db_password,
+        host=db_host,
+        database=db_name
+    )
+    return connection
