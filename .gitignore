@@ -2,3 +2,6 @@
 __pycache__
 venv_
 *main.sql
+.venv
+SimpleAPI
+__MACOSX
