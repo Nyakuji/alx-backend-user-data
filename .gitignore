@@ -6,3 +6,4 @@ venv_
 .venv
 SimpleAPI
 __MACOSX
+.db_User.json
