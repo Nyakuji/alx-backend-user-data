@@ -9,9 +9,12 @@ class Auth:
     Auth class for handling authentication and authorization.
 
     Methods:
-    - require_auth(path: str, excluded_paths: List[str]) -> bool: Checks if authentication is required for the given path.
-    - authorization_header(request=None) -> str: Retrieves the authorization header from the request.
-    - current_user(request=None) -> TypeVar('User'): Retrieves the current user based on the request.
+    - require_auth(path: str, excluded_paths: List[str]) -> bool: Checks if
+    authentication is required for the given path.
+    - authorization_header(request=None) -> str: Retrieves the
+      authorization header from the request.
+    - current_user(request=None) -> TypeVar('User'): Retrieves
+    the current user based on the request.
     """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
@@ -20,7 +23,8 @@ class Auth:
 
         Args:
         - path (str): The path to check.
-        - excluded_paths (List[str]): List of paths that are excluded from authentication.
+        - excluded_paths (List[str]): List of paths that
+          are excluded from authentication.
 
         Returns:
         - bool: True if authentication is required, False otherwise.

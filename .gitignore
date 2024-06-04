@@ -1,4 +1,5 @@
 *main.py
+main_*.py
 __pycache__
 venv_
 *main.sql
