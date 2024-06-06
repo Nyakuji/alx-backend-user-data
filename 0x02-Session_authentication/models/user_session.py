@@ -3,6 +3,7 @@
 from sqlalchemy import Column, String
 from models.base import Base
 
+
 class UserSession(Base):
     __tablename__ = 'user_sessions'
 
@@ -13,4 +14,3 @@ class UserSession(Base):
         super().__init__(*args, **kwargs)
         self.user_id = kwargs.get('user_id')
         self.session_id = kwargs.get('session_id')
-        
