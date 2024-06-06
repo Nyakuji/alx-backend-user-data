@@ -57,10 +57,13 @@ def before_request() -> str:
     request_path_list = [
         '/api/v1/status/',
         '/api/v1/unauthorized/',
-        '/api/v1/forbidden/']
+        '/api/v1/forbidden/',
+        '/api/v1/auth_session/login/']  # Add the new path here
     if auth:
         if auth.require_auth(request.path, request_path_list):
-            if auth.authorization_header(request) is None:
+            if auth.authorization_header(request) is \
+                None and auth.session_cookie(
+                    request) is None:  # Check both conditions
                 abort(401)
             request.current_user = auth.current_user(request)
             if request.current_user is None:
