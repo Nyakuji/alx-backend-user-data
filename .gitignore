@@ -8,3 +8,4 @@ SimpleAPI
 __MACOSX
 .db_User.json
 venv
+.db_UserSession.json

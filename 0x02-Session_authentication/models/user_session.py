@@ -1,18 +1,12 @@
 #!/usr/bin/env python3
-""" Module for User Session """
-from sqlalchemy import Column, String
+""" Module for UserSession class """
 from models.base import Base
 
 
 class UserSession(Base):
-    """ UserSession class """
-    __tablename__ = 'user_sessions'
+    """ UserSession model to store session ID and user ID """
 
-    user_id = Column(String(60), nullable=False)
-    session_id = Column(String(60), nullable=False)
-
-    def __init__(self, *args, **kwargs):
-        """ Initializer """
+    def __init__(self, *args: list, **kwargs: dict):
         super().__init__(*args, **kwargs)
         self.user_id = kwargs.get('user_id')
         self.session_id = kwargs.get('session_id')
