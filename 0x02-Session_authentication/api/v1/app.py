@@ -6,6 +6,7 @@ from os import getenv
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
+from models.user_session import UserSession
 import os
 
 
@@ -30,6 +31,9 @@ elif os.getenv("AUTH_TYPE") == "session_exp_auth":
 elif os.getenv("AUTH_TYPE") == "session_db_auth":
     from api.v1.auth.session_db_auth import SessionDBAuth
     auth = SessionDBAuth()
+
+# Ensure session data is loaded on startup
+UserSession.load_from_file()
 
 
 @app.errorhandler(404)
