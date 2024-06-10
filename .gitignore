@@ -9,3 +9,4 @@ __MACOSX
 .db_User.json
 venv
 .db_UserSession.json
+env
