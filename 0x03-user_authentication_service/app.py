@@ -53,7 +53,7 @@ def logout() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     if user is None:
         abort(403)
     AUTH.destroy_session(user.id)
-    
+
     return redirect("/")
 
 
