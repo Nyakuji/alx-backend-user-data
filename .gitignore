@@ -10,3 +10,4 @@ __MACOSX
 venv
 .db_UserSession.json
 env
+a.db
