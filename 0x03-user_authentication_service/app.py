@@ -55,9 +55,7 @@ def logout() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     AUTH.destroy_session(email)
     response = jsonify({"message": "logout successful"})
     response.delete_cookie("session_id")
-    return response
-
-redirect("/")
+    return redirect("/")
 
 
 if __name__ == "__main__":
