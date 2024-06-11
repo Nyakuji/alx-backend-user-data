@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """app module"""
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
 from typing import Dict, Union, Tuple
 
@@ -57,7 +57,7 @@ def logout() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     response.delete_cookie("session_id")
     return response
 
-    redirect("/")
+redirect("/")
 
 
 if __name__ == "__main__":
