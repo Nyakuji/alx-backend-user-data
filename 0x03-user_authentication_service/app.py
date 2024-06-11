@@ -46,15 +46,14 @@ def login() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
 @app.route("/sessions", methods=["DELETE"])
 def logout() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     """Logs out a user"""
-    session_id = request.cookies.get("session_id")
+    session_id = request.cookies.get("session_id", None)
     if session_id is None:
         abort(403)
-    email = AUTH.get_user_from_session_id(session_id)
-    if email is None:
+    user = AUTH.get_user_from_session_id(session_id)
+    if user is None:
         abort(403)
-    AUTH.destroy_session(email)
-    response = jsonify({"message": "logout successful"})
-    response.delete_cookie("session_id")
+    AUTH.destroy_session(user.id)
+    
     return redirect("/")
 
 
