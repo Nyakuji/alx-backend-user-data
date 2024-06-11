@@ -57,6 +57,8 @@ def logout() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     response.delete_cookie("session_id")
     return response
 
+    redirect("/")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
