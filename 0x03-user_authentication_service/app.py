@@ -73,11 +73,15 @@ def profile() -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
 def get_reset_password_token(
 ) -> Union[Dict[str, str], Tuple[Dict[str, str], int]]:
     """Generates a reset password token"""
-    email = request.form.get("email")
-    if not AUTH.find_user_by(email=email):
+    try:
+        email = request.form.get("email")
+    except ValueError:
         abort(403)
-    reset_token = AUTH.get_reset_password_token(email)
-    return jsonify({"email": email, "reset_token": reset_token}), 200
+    try:
+        token = AUTH.get_reset_password_token(email)
+    except ValueError:
+        abort(403)
+    return jsonify({"email": email, "reset_token": token}), 200
 
 
 if __name__ == "__main__":
